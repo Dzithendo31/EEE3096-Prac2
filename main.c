@@ -466,7 +466,13 @@ void TIM16_IRQHandler(void)
 	uint8_t value = read_from_address(currentAddress);
 
 	// Write value to LEDs on GPIOB (change this to match your hardware)
-	GPIOB->ODR = value;
+
+  if (value != patterns[currentAddress]){
+    GPIOB->ODR =  0b00000001;
+  }
+  else{
+    GPIOB->ODR = value;
+  }
 	currentAddress++;
     if(currentAddress >= 6)  // Assuming EEPROM_SIZE is the size of your EEPROM
     {
