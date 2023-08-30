@@ -135,7 +135,25 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	// TODO: Check button PA0; if pressed, change timer delay
+  // TODO: Check button PA0; if pressed, change timer delay
+	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_RESET){
+    if (htim16.Init.Period == 1000 - 1)
+    {
+        htim16.Init.Period = 500 - 1;
+        if (HAL_TIM_Base_Init(&htim16) != HAL_OK)
+        {
+            Error_Handler(); // Call the error handling function
+        }
+    }
+    else if (htim16.Init.Period == 500 - 1)
+    {
+        htim16.Init.Period = 1000 - 1;
+        if (HAL_TIM_Base_Init(&htim16) != HAL_OK)
+        {
+            Error_Handler(); // Call the error handling function
+        }
+    }
+  }
 
   }
   /* USER CODE END 3 */
