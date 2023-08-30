@@ -136,7 +136,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
   // TODO: Check button PA0; if pressed, change timer delay
-	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_RESET){
+  if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_RESET){
     if (htim16.Init.Period == 1000 - 1)
     {
         htim16.Init.Period = 500 - 1;
